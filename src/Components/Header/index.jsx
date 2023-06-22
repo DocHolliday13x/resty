@@ -1,12 +1,20 @@
 import React from 'react';
 
-function Header() {
+const Header = (props) => {
   return (
     <header>
-      <h1>RESTy</h1>
+      <h1 data-test-id="header-h1" >RESTy</h1>
     </header>
   );
 }
+
+// function Header() {
+//   return (
+//     <header>
+//       <h1>RESTy</h1>
+//     </header>
+//   );
+// }
 
 // class Header extends React.Component {
 //   render() {
