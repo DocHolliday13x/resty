@@ -22,6 +22,7 @@ The application flow should be as follows:
 ### Links and Resources
 
 - [GitHub Actions ci/cd](https://github.com/DocHolliday13x/resty/actions/)
+- [codesandbox.io](https://codesandbox.io/p/github/DocHolliday13x/resty/main?workspaceId=2b93d989-3f5a-46b4-bace-66a3e373e930)
 <!-- - [back-end server url](http://xyz.com) (when applicable)
 - [front-end application](http://xyz.com) (when applicable) -->
 
