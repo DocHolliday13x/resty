@@ -125,5 +125,5 @@ For now I have none and do not require one.
 
 #### UML
 
-- ![Lab 26 Whiteboard](./resty/public/lab26Whiteboard.png)
-- ![Lab 27 Whiteboard](./resty/public/lab27Whiteboard.png)
+- ![Lab 26 Whiteboard](/public/lab26Whiteboard.png)
+- ![Lab 27 Whiteboard]()
