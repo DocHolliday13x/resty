@@ -1,38 +1,37 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from '../App';
-import Form from '../Components/Form/index.jsx';
 
-describe('results', () => {
-  it('should render results', () => {
+describe('App component integration', () => {
+
+  it('should render the app', async () => {
     render(<App />);
 
     let method = screen.getByTestId('app-method');
     let url = screen.getByTestId('app-url');
-    expect(method).toHaveTextContent('Request Method: ');
-    expect(url).toHaveTextContent('URL: ');
+    expect (method).toHaveTextContent('Request Method: ');
+    expect (url).toHaveTextContent('URL: ');
   });
-});
 
-describe('form', () => {
-  it('should render form', () => {
-    render(<Form />);
+  it('should render the app with a form', async () => {
+    render(<App />);
 
-    const get = screen.getByTestId('form-get');
-    const post = screen.getByTestId('form-post');
+    let method = screen.getByTestId('app-method');
+    let url = screen.getByTestId('app-url');
+    let get = screen.getByTestId('get');
+    let inputURL = screen.getByTestId('form-input');
+    let button = screen.getByTestId('form-button');
+    let results = screen.getByTestId('results-section');
 
-    expect(get).toHaveStyle("background-color: grey");
-    expect(post).toHaveStyle("background-color: teal");
+    fireEvent.change(inputURL, { target: { value: 'https://pokeapi.co/api/v2/pokemon' } });
+    fireEvent.click(get);
+    fireEvent.click(button);
 
-    fireEvent.click(post);
-
-    setTimeout(() => {
-      expect(get).toHaveStyle("background-color: teal");
-      expect(post).toHaveStyle("background-color: grey");
-    }, 500);
+    expect (method).toHaveTextContent('Request Method: GET');
+    expect (url).toHaveTextContent('URL: https://pokeapi.co/api/v2/pokemon');
+    expect (results).toHaveTextContent('Results: ');
   });
+
 });
-
-
 
 
