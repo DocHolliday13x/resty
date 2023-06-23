@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
-import App from './App';
-import Form from './Components/Form/index.jsx';
+import App from '../App';
+import Form from '../Components/Form/index.jsx';
 
 describe('results', () => {
   it('should render results', () => {
