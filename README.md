@@ -19,7 +19,7 @@ The application flow should be as follows:
   - Displays the response headers and results separately
   - Both headers and results should be "pretty printed" JSON
 
-- **Lab 28 - RESTy (cont.):** Today's assignment is to get RESTy connected with an API and then run live requests. Phase 3 requirements are are to connect to the API, then fetch and display remote data. The primary focuse will be the `GET` requests. Then we will then need to store that data in our state and display it in our app. The following user stories detail the major functionality for this phase of the project:
+- **Lab 28 - RESTy (cont.):** Today's assignment is to get RESTy connected with an API and then run live requests. Phase 3 requirements are are to connect to the API, then fetch and display remote data. The primary focus will be the `GET` requests. Then we will then need to store that data in our state and display it in our app. The following user stories detail the major functionality for this phase of the project:
   - As a user, I want to enter the URL to an API and issue a GET request so that I can retrieve it’s data.
   - As a user, I want to see the results returned from an API request in my browser in a readable format.
 The application flow should be the same as before:
@@ -30,6 +30,20 @@ The application flow should be the same as before:
   - Displays the response headers and results separately
   - Both headers and results should be "pretty printed" JSON
 
+- **Lab 29 - RESTy (cont.):** Today will be a doozy. We need to add the ability to track history in our application by tracking every API call and storing it in history. The following user story details the major functionality for this phase of the project:
+  - As a user, I want to see a list of my previous API calls, so that I can see the results again, quickly.
+The application flow should be as follows:
+  - User enters an API URL
+  - Chooses a REST Method
+  - Clicks the “Go” button
+  - Application fetches data from URL/API
+  - Application stores the API request and returned data into state.
+  - Updates the list of previous API calls.
+  - Application displays the response headers and results separately.
+  - Both headers and results should be "pretty printed" JSON.
+
+*The stretch goal for today is to store the history in local storage as well as in state. When the application loads, use an effect to read from local storage and put that history into state right away.*
+
 ### Links and Resources
 
 - [GitHub Actions ci/cd](https://github.com/DocHolliday13x/resty/actions/)
@@ -38,6 +52,7 @@ The application flow should be the same as before:
 - [front-end application](http://xyz.com) (when applicable) -->
 - [Airbnb React/JSX Style Guide](https://airbnb.io/javascript/react/)
 - [MSW](https://testing-library.com/docs/react-testing-library/example-intro/#full-example)
+- [REACT useRecucer](https://react.dev/reference/react/useReducer)
 
 ### Collaborators
 
@@ -45,6 +60,7 @@ The application flow should be the same as before:
 - Reece Renninger
 - Nick Mullaney
 - Ike Steoger
+- Kaeden O'Meara
 
 ### Setup
 
@@ -136,6 +152,21 @@ Suggested Approach:
 
 **NOTE:** Update `<Results />` component to use a 3rd party component library to "pretty print" the JSON data in a color-coded, user friendly format.
 
+- **Lab 29 - RESTy Phase 4**
+
+1. Continue working in the same repository from the previous lab.
+2. Extend React Application to include the ability to save the history of each API request.
+3. Refactor state management within the `<App />` component to use the `useReducer()` hook.
+4. Replace any component state managements to use derived state from `useReducer()` with a reducer function and initial state.
+5. Make sure all relevent requests and response data is displayed to the user.
+
+- `<App />`: Use a reducer to store and manage all application state: loading, results, and history.
+  - Add to history array in state with each API call (method, url, results json).
+- `<History />`: Iterates the history array in state and shows the previous API calls.
+  - When one is clicked on, show results in the `<Results />` component.
+
+**NOTE:** Update `<Results />` component to render whatever is in state. Proposed file structure appears to remain the same as before.
+
 #### `.env` requirements (where applicable)
 
 For now I have none and do not require one.
@@ -186,3 +217,4 @@ For now I have none and do not require one.
 - ![Lab 26 Whiteboard](/public/lab26Whiteboard.png)
 - ![Lab 27 Whiteboard](/public/lab27Whiteboard.png)
 - ![Lab 28 Whiteboard](/public/lab28Whiteboard.png)
+- ![Lab 29 Whiteboard](/public/lab29Whiteboard.png)
