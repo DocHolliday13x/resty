@@ -1,6 +1,19 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from '../App';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+
+const server = setupServer(
+  rest.get('https://pokeapi.co/api/v2/pokemon', (req, res, ctx) => {
+    return res(ctx.json({ name: 'bulbasaur' }));
+  })
+);
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
 
 describe('App component integration', () => {
 
