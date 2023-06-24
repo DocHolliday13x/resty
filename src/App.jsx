@@ -47,37 +47,36 @@ function App() {
 
   
   useEffect(() => {
-    console.log('Event Occured!');
+    console.log('Event Occurred!');
     console.log(state);
   }, [state]);
-  
+
   useEffect(() => {
     console.log('Request Params Changed!');
     console.log(requestParams);
-  }, [requestParams]);
 
-  useEffect(() => {
-    try{
-      dispatch({ type: 'LOADING', payload: true });
-      async function fetchData() {
-        if(requestParams.method === 'GET'){
-          let response = await axios.fetch(requestParams.url);
+    dispatch({ type: 'LOADING', payload: true });
+
+    async function fetchData() {
+      try {
+        if (requestParams.method === 'GET') {
+          let response = await axios.get(requestParams.url);
           dispatch({ type: 'DATA', payload: response.data.results });
           let historyData = [requestParams, response.data];
           dispatch({ type: 'HISTORY', payload: historyData });
         }
-        if(requestParams.method && requestParams.url){
-          fetchData();
-          dispatch({ type: 'LOADING', payload: false });
-        }
+      } catch (error) {
+        dispatch({ type: 'DATA', payload: 'No Available Data' });
+      } finally {
+        dispatch({ type: 'LOADING', payload: false });
       }
-    } catch  {
-      dispatch({ type: 'DATA', payload: 'No Available Data' });
-      dispatch({ type: 'LOADING', payload: false });
+    }
+
+    if (requestParams.method && requestParams.url) {
+      fetchData();
     }
   }, [requestParams]);
-  
-  
+
   const callApi = (requestParams) => {
     setRequestParams(requestParams);
   };
@@ -85,6 +84,7 @@ function App() {
   const handleHistory = (results) => {
     dispatch({ type: 'DATA', payload: results });
   };
+
 
   // useEffect(() => {
   //   async function fetchData() {
